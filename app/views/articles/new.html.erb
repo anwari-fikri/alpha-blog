@@ -1,6 +1,5 @@
-<h1>Articles</h1>
-
 <h1>What the hell is going on</h1>
+
 <%= form_with model: @article do |form| %>
   <div>
     <%= form.label :title %><br>
@@ -15,12 +14,5 @@
   <div>
     <%= form.submit %>
   </div>
-<% end %>
 
-<% @articles.reverse_each do |article| %>
-  <ol>
-    <h2><%= article.title %></h2>
-    <h3><%= article.description %></h3>
-  </ol>
-  <br>
 <% end %>
