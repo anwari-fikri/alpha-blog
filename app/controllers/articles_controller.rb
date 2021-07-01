@@ -22,6 +22,20 @@ class ArticlesController < ApplicationController
       render plain: @article.errors.full_messages
     end
   end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render plain: @article.errors.full_messages
+    end
+  end
   
   private
     def article_params
