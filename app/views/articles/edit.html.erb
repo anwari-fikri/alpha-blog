@@ -1,18 +1,6 @@
 <h1>Editas</h1>
 
-<%= form_with model: @article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
+<%= render 'form' %>
 
-  <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-
-<% end %>
+<br>
+<%= link_to "Cancel edit", article_path(@article) %>
