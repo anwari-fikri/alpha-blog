@@ -1,28 +1,29 @@
-<h1>Articles</h1>
-
-<h1>What the hell is going on</h1>
-<%= form_with model: @article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<% @articles.reverse_each do |article| %>
-  <ol>
-    <div>
-      <h2><%= link_to article.title, article_path(article) %></h2>
-      <h3><%= article.description %></h3>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      
     </div>
-  </ol>
-  <br>
-<% end %>
+    <div class="col-7">
+      <div class="container mt-4">
+        <h2>What the hell is going on</h2>
+      </div>
+      <%= render 'smallform' %>
+      
+      <div class="container">
+        <% @articles.reverse_each do |article| %>
+          <div class="card">
+            <div class="card-body">
+              <h4><%= link_to article.title, article_path(article), class: "card-title" %></h4>
+              <h6 class="card-subtitle mb-2 text-muted">@<%= article.updated_at %></h6>
+              <p><pre><%= article.description %></pre></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+    </div>
+    <div class="col">
+      
+    </div>
+  </div>
+</div>
