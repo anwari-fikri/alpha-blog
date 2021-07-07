@@ -2,7 +2,7 @@
 <div class="card container mt-5">
   <div class="card-body">
     <h4><%= @article.title %></h4>
-    <h6 class="card-subtitle mb-2 text-muted">@<%= @article.updated_at %></h6>
+    <h6 class="card-subtitle mb-2 text-muted">@<%= @article.user.username %> · <%= time_ago_in_words(@article.updated_at) %> ago</h6>
     <hr>
     <p><pre><%= @article.description %></pre></p>
   </div>
