@@ -15,8 +15,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def edit
+    
+  end
 
+  def update
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      render plain: @user.errors.full_messages
+    end
+  end
+
+  def show
+    @articles = @user.articles
   end
 
   private
