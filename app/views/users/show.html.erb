@@ -1,5 +1,10 @@
 <div class="container">
-  <h1>Hello @<%= @user.username %></h1>
-
+  <div class="container mt-4 mb-4">
+    <h1><%= @user.username %></h1>
+    <span class="text-muted"><%= @user.email%></span>
+    <br>
+    <span><%= @user.description %></span>
+  </div>
+  
   <%= render 'articles/article' %>
 </div>

@@ -1,29 +1,32 @@
-<div class="container mt-3">
-  <%= form_with model: @user do |form| %>
-    <div>
-      <%= form.label :username, class: "h5 form-label" %><br>
-      <%= form.text_field :username, class: "form-control", id: "exampleFormControlInput1" %>
-    </div>
+<%= form_with model: @user do |form| %>
+  <div>
+    <%= form.label :username, class: "h5 form-label" %><br>
+    <%= form.text_field :username, class: "form-control", id: "exampleFormControlInput1" %>
+  </div>
 
-    <div>
-      <%= form.label :email, class: "h5 form-label" %><br>
-      <%= form.email_field :email, class: "form-control", id: "exampleFormControlInput1" %>
-    </div>
-  
-    <div>
-      <%= form.label :password, class: "h5 form-label" %><br>
-      <%= form.password_field :password, class: "form-control", id: "exampleFormControlInput1" %>
-    </div>
+  <div>
+    <%= form.label :description, class: "h5 form-label" %><br>
+    <%= form.text_area :description, class: "form-control", id: "exampleFormControlInput1" %>
+  </div>
 
-    <div>
-      <%= form.label :password_confirmation, "Repeat password", class: "h5 form-label" %><br>
-      <%= form.password_field :password_confirmation, class: "form-control", id: "exampleFormControlInput1" %>
+  <div>
+    <%= form.label :email, class: "h5 form-label" %><br>
+    <%= form.email_field :email, class: "form-control", id: "exampleFormControlInput1" %>
+  </div>
+
+  <div>
+    <%= form.label :password, class: "h5 form-label" %><br>
+    <%= form.password_field :password, class: "form-control", id: "exampleFormControlInput1" %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation, "Repeat password", class: "h5 form-label" %><br>
+    <%= form.password_field :password_confirmation, class: "form-control", id: "exampleFormControlInput1" %>
+  </div>
+
+  <div class="mt-4">
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <%= form.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-primary", data: { confirm: "Are you sure?" }) %>
     </div>
-  
-    <div class="mt-4">
-      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        <%= form.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-primary", data: { confirm: "Are you sure?" }) %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
