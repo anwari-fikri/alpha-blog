@@ -1,0 +1,12 @@
+<% @users.reverse_each do |user| %>
+  <%= link_to user_path(user), style: "text-decoration: none;", :action => 'go' do %>
+    <div class="card">
+      <div class="card-body">
+        <h1><%= user.username %></h1>
+        <span class="text-muted"><%= user.email%></span>
+        <br>
+        <span><%= user.description %></span>
+      </div>
+    </div>
+  <% end %>
+<% end %>
