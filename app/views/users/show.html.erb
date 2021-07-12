@@ -8,4 +8,9 @@
   </div>
   
   <%= render 'articles/article_list' %>
+  <div class="d-flex justify-content-center bd-highlight mt-3">
+    <ul class="pagination">
+      <li><%= will_paginate @articles, class: "page-link" %></li>
+    </ul>
+  </div>
 </div>
