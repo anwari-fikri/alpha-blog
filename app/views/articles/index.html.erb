@@ -1,17 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-2">
       
     </div>
     <div class="col-7">
-      <div class="container mt-4">
-        <h2>What the hell is going on</h2>
+      <div class="container border pt-2 pb-2">
+        <h2>Latest Articles</h2>
       </div>
-      <%= render 'small_form' %>
-      <%= render 'article_list' %>
-      
+      <div class="border">
+        <%= render 'small_form' %>
+        <%= render 'article_list' %>
+      </div>
     </div>
     <div class="col">
+      <div class="container border mt-5 mb-5 pt-2 pb-2">
+        <%= render 'users/user_list_small' %>
+      </div>
       
     </div>
   </div>

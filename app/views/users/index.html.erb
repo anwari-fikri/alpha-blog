@@ -1,4 +1,16 @@
-<div class="container mt-4 mb-4">
-  <h1>Check out these users</h1>
-  <%= render 'user_list' %>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      
+    </div>
+    <div class="col-7">
+      <%= render "shared/return_nav", obj: articles_path, txt: "Check out these users" %>
+      <div class="container border pt-2 pb-4">
+        <%= render 'user_list' %>
+      </div>
+    </div>
+    <div class="col">
+      
+    </div>
+  </div>
 </div>

@@ -1,0 +1,13 @@
+<h2>Users</h2>
+<% @users.limit(4).each do |user| %>
+  <%= link_to user_path(user), style: "text-decoration: none;", :action => 'go' do %>
+    <div class="card">
+      <div class="card-body">
+        <h6><%= user.username %></h6>
+        <span class="text-muted"><%= user.email%></span>
+        <br>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<h5 class="mt-2"><%= link_to "See more", users_path, style: "text-decoration: none" %></h5>
