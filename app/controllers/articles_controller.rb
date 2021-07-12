@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @article = Article.new
+    @users = User.all
   end
 
   def show

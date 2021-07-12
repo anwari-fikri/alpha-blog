@@ -1,10 +1,11 @@
 <div class="container">
+  <%= render "shared/return_nav", obj: articles_path, txt: pluralize(@user.articles.count, "article") %>
   <div class="container mt-4 mb-4">
     <h1><%= @user.username %></h1>
-    <span class="text-muted"><%= @user.email%></span>
+    <span class="text-muted"><%= @user.email %></span>
     <br>
     <span><%= @user.description %></span>
   </div>
   
-  <%= render 'articles/article' %>
+  <%= render 'articles/article_list' %>
 </div>
