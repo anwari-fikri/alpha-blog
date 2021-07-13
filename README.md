@@ -1,7 +1,7 @@
 # First things first
 1. Change the Ruby version in the "Gemfile" to your current Ruby version (Ruby version: 2.7.3 is recommended)
 
-2. Then create an empty Gemfile.lock
+2. Make sure Gemfile.lock is empty
 
 # Docker
 Commands are referred from https://docs.docker.com/samples/rails/
