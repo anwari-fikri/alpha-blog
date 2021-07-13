@@ -2,7 +2,9 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-2">
-      
+      <h3><%= session[:username] %></h3>
+      <%= link_to "Log in", login_path %>
+      <%= link_to "Log out", logout_path, method: :delete %>
     </div>
     <div class="col-7">
       <div class="container border pt-2 pb-2">
