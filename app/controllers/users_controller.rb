@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:show, :new]
   before_action :require_same_user, only: [:edit, :update, :destroy]
-  
-  def index
-    @users = User.paginate(page: params[:page], per_page: 4)
-  end
 
   def new
     redirect_to root_path if logged_in?
     @user = User.new
+  end
+
+  def index
+    @users = User.paginate(page: params[:page], per_page: 4)
   end
 
   def create
@@ -25,16 +25,16 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+    @articles = @user.articles.paginate(page: params[:page], per_page: 5).order("created_at DESC")
+  end
+
   def update
     if @user.update(user_params)
       redirect_to @user
     else
       render plain: @user.errors.full_messages
     end
-  end
-
-  def show
-    @articles = @user.articles.paginate(page: params[:page], per_page: 5).order("created_at DESC")
   end
 
   private
