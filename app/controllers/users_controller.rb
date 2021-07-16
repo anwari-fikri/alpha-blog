@@ -16,9 +16,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       user = User.find_by(email: user_params["email"].downcase)
-      if !user
-        user = User.find_by(username: user_params["username"].downcase)
-      end
       session[:user_id] = user.id
       session[:username] = user.username
       redirect_to root_path
@@ -44,8 +41,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
-    session[:username] = nil
+    if current_user == @user
+      session.destroy
+    end
     redirect_to root_path
   end
 
@@ -60,7 +58,7 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @user
+      if current_user != @user && !current_user.admin?
         render plain: "wait... that's illegal"
       end
     end
