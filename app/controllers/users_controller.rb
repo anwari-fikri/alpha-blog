@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:show, :new]
+  before_action :require_user, except: [:show, :new, :create]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def new
@@ -14,8 +14,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
+      user = User.find_by(email: user_params["email"].downcase)
+      if !user
+        user = User.find_by(username: user_params["username"].downcase)
+      end
+      session[:user_id] = user.id
+      session[:username] = user.username
       redirect_to root_path
     else
       render plain: @user.errors.full_messages
