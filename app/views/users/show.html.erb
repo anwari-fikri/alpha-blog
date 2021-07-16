@@ -13,4 +13,5 @@
       <li><%= will_paginate @articles, class: "page-link" %></li>
     </ul>
   </div>
+  <%= link_to "Delete account", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>

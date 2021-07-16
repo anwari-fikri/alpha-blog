@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user
+      redirect_to root_path
     else
       render plain: @user.errors.full_messages
     end
@@ -35,6 +35,13 @@ class UsersController < ApplicationController
     else
       render plain: @user.errors.full_messages
     end
+  end
+
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    session[:username] = nil
+    redirect_to root_path
   end
 
   private
