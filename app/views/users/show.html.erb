@@ -1,7 +1,7 @@
 <div class="container">
   <%= render "shared/return_nav", obj: articles_path, txt: pluralize(@user.articles.count, "article") %>
   <div class="container mt-4 mb-4">
-    <h1><%= @user.username %></h1>
+    <h1><%= @user.username %><%= " 👷" if @user.admin? %></h1>
     <span class="text-muted"><%= @user.email %></span>
     <br>
     <span><%= @user.description %></span>
@@ -13,4 +13,5 @@
       <li><%= will_paginate @articles, class: "page-link" %></li>
     </ul>
   </div>
+  <%= link_to "Delete account", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
