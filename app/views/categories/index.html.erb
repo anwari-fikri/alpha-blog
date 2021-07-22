@@ -1,0 +1,9 @@
+<% @categories.each do |category| %>
+  <%= link_to category_path(category), style: "text-decoration: none;", :action => 'go' do %>
+    <div class="card">
+      <div class="card-body">
+        <h1><%= category.name %></h1>
+      </div>
+    </div>
+  <% end %>
+<% end %>

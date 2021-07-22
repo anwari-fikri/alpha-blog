@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
+    @categories = Category.all
   end
 
   def create
@@ -16,10 +17,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @category = Category.find(params[:id])
   end
 
   private
-    def article_params
+    def category_params
       params.require(:category).permit(:name)
     end
   
