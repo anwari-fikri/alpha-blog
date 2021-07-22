@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  before_action :require_user, except: [:show, :new, :create]
+  before_action :require_admin, except: [:index, :show]
+
   def new
     @category = Category.new
   end
@@ -22,8 +25,15 @@ class CategoriesController < ApplicationController
   end
 
   private
+
     def category_params
       params.require(:category).permit(:name)
     end
   
+    def require_admin
+      if !(logged_in? && current_user.admin?)
+        render plain: "wait... that's illegal"
+      end
+    end
+
 end
