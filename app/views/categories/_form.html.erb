@@ -1,0 +1,12 @@
+<%= form_with model: @category do |form| %>
+  <div>
+    <%= form.label :name, "Category name", class: "h5 form-label" %><br>
+    <%= form.text_field :name, class: "form-control", id: "exampleFormControlInput1" %>
+  </div>
+
+  <div class="mt-4">
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <%= form.submit class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+    </div>
+  </div>
+<% end %>
