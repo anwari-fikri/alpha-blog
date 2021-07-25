@@ -1,2 +1,5 @@
-<br>
-<h1><%= @category.name %></h1>
+<div class="container">
+  <%= render "shared/return_nav", obj: articles_path, txt: @category.name %>
+  <br>
+  <%= render 'articles/article_list' %>
+</div>

@@ -1,9 +1,17 @@
-<% @categories.each do |category| %>
-  <%= link_to category_path(category), style: "text-decoration: none;", :action => 'go' do %>
-    <div class="card">
-      <div class="card-body">
-        <h1><%= category.name %></h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      
+    </div>
+    <div class="col-7">
+      <%= render "shared/return_nav", obj: articles_path, txt: "Categories" %>
+      <div class="container border pt-2 pb-4">
+        <%= render 'category_list' %>
       </div>
     </div>
-  <% end %>
-<% end %>
+    <div class="col">
+      
+    </div>
+  </div>
+</div>

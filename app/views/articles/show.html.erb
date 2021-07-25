@@ -2,14 +2,14 @@
 <%= render "shared/return_nav", obj: articles_path, txt: "Article" %>
 <div class="card container mt-5">
   <div class="card-body">
+    <%= render @article.categories %>
     <h4><%= @article.title %></h4>
     <h6 class="card-subtitle mb-2 text-muted">@<%= link_to @article.user.username, user_path(@article.user), class: "text-muted", style: "text-decoration: none; font-weight: bold" %> · <%= time_ago_in_words(@article.updated_at) %> ago</h6>
-        
     <hr>
     <p><pre><%= @article.description %></pre></p>
   </div>
 </div>
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="btn-group d-flex justify-content-center"" role="group" aria-label="Basic mixed styles example">
     <%= link_to "Return", articles_path, class: "btn btn-primary" %>
     <% if logged_in? && (@article.user == current_user || current_user.admin? )%>

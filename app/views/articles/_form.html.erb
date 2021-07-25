@@ -9,6 +9,12 @@
       <%= form.label :description, class: "h5 form-label" %><br>
       <%= form.text_area :description, class: "form-control mh-100", id: "exampleFormControlTextarea1", rows: "20" %>
     </div>
+
+    <div>
+      <%= form.label :category, class: "h5 form-label" %><br>
+      <%= form.collection_select(:category_ids, Category.all, :id, :name,
+            { include_blank: 'None' }, { multiple: true, class: "form-control mh-100" }) %>
+    </div>
   
     <div class="mt-5">
       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
