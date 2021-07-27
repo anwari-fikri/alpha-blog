@@ -48,7 +48,7 @@ class CategoriesController < ApplicationController
   
     def require_admin
       if !(logged_in? && current_user.admin?)
-        render plain: "wait... that's illegal"
+        render plain: "[categories] wait... that's illegal. Only admin can do that."
       end
     end
 

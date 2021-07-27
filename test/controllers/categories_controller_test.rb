@@ -7,17 +7,57 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     @admin_user = User.create(username: "admin", email: "admin@alphablog.com", password: "password", admin: true)
   end
 
-  test "should get index if logged in" do
-    sign_in_as(@user)
+  #index
+
+  test "when not logged in, redirect to login page when accessing index" do
     get categories_url
+
+    assert_redirected_to login_path
+  end
+
+  test "when logged in as user, get index when accessing index" do
+    sign_in_as(@user)
+
+    get categories_url
+
     assert_response :success
   end
 
-  test "should get new" do
+  test "when logged in as admin, get index when accessing index" do
     sign_in_as(@admin_user)
-    get new_category_url
+
+    get categories_url
+    
     assert_response :success
   end
+
+
+  #new
+
+  test "when not logged in, show permission error when accessing new" do
+    get new_category_url
+
+    assert_match "[categories] wait... that's illegal. Only admin can do that.", response.body, "Given text to match is not found in the body"
+  end
+
+  test "when logged in as admin, show permission error when accessing new" do
+    sign_in_as(@user)
+
+    get new_category_url
+
+    assert_match "[categories] wait... that's illegal. Only admin can do that.", response.body, "Given text to match is not found in the body"
+  end
+
+  test "when logged in as admin, get new when accessing new" do
+    sign_in_as(@user)
+
+    get new_category_url
+
+    assert_response :success, "response does not land on expected page"
+  end
+
+
+  #create
 
   test "should create category" do
     sign_in_as(@admin_user)
