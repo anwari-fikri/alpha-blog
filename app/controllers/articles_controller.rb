@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
-  before_action :setup_nav, only: [:index, :show]
+  before_action :setup_navbar, only: [:index, :show]
 
   def new
     @article = Article.new
