@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :setup_nav, only: [:index, :show]
 
   def new
     @article = Article.new
@@ -10,7 +11,6 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5).order("created_at DESC")
     @article = Article.new
-    @users = User.all
   end
 
   def create

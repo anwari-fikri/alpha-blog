@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def setup_navbar
+    @users = User.all
+    @categories = Category.all
+  end
+
 end

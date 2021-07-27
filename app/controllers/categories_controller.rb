@@ -2,13 +2,13 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:show, :new, :create]
   before_action :require_admin, except: [:index, :show]
+  before_action :setup_nav, only: [:index, :show]
 
   def new
     @category = Category.new
   end
 
   def index
-    @categories = Category.all
   end
 
   def create
