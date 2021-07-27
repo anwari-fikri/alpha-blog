@@ -1,5 +1,18 @@
 <div class="container">
-  <%= render "shared/return_nav", obj: articles_path, txt: @category.name %>
-  <br>
-  <%= render 'articles/article_list' %>
+  <div class="row">
+    <div class="col-2">
+      <%= render 'shared/main_nav' %>
+    </div>
+
+    <div class="col-7">
+      <%= render "shared/return_nav", obj: articles_path, txt: @category.name %>
+      <div class="container border p-0 pt-4 pb-4">
+        <%= render 'articles/article_list' %>
+      </div>
+    </div>
+
+    <div class="col">
+      <%= render 'shared/side_nav' %>
+    </div>
+  </div>
 </div>

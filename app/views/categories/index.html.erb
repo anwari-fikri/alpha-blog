@@ -2,16 +2,18 @@
 <div class="container">
   <div class="row">
     <div class="col-2">
-      
+      <%= render 'shared/main_nav' %>
     </div>
+    
     <div class="col-7">
       <%= render "shared/return_nav", obj: articles_path, txt: "Categories" %>
-      <div class="container border pt-2 pb-4">
+      <div class="container border pt-4 pb-4">
         <%= render 'category_list' %>
       </div>
     </div>
+
     <div class="col">
-      
+      <%= render 'shared/side_nav' %>
     </div>
   </div>
 </div>

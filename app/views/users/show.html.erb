@@ -1,17 +1,43 @@
 <div class="container">
-  <%= render "shared/return_nav", obj: articles_path, txt: pluralize(@user.articles.count, "article") %>
-  <div class="container mt-4 mb-4">
-    <h1><%= @user.username %><%= " 👷" if @user.admin? %></h1>
-    <span class="text-muted"><%= @user.email %></span>
-    <br>
-    <span><%= @user.description %></span>
+  <div class="row">
+    
+    <div class="col-2">
+      <%= render 'shared/main_nav' %>
+    </div>
+
+    <div class="col-7">
+      <%= render "shared/return_nav", obj: articles_path, txt: pluralize(@user.articles.count, "article") %>
+      <div class="container border p-0">
+        <div class="container d-flex bd-highlight mt-4 mb-2">
+          <div class="p-2 w-100 bd-highlight">
+            <h1><%= @user.username %><%= " 👷" if @user.admin? %></h1>
+            <span class="text-muted"><%= @user.email %></span>
+            <br><br>
+            <span><%= @user.description %></span>
+          </div>
+          <% if @user == current_user %>
+            <div class="p-2 flex-shrink-1 bd-highlight">
+              <div class="dropstart">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <%= link_to "Edit", edit_user_path(@user), class: "list-group-item" %>
+                  <%= link_to "Delete account", user_path(@user), class: "list-group-item btn-outline-danger", method: :delete, data: { confirm: "Are you sure you want to delete your account?" } %>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <%= render 'articles/article_list' %>
+        <div class="d-flex justify-content-center bd-highlight mt-3">
+          <ul class="pagination">
+            <li><%= will_paginate @articles, class: "page-link" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <%= render 'shared/side_nav' %>
+    </div>
   </div>
-  
-  <%= render 'articles/article_list' %>
-  <div class="d-flex justify-content-center bd-highlight mt-3">
-    <ul class="pagination">
-      <li><%= will_paginate @articles, class: "page-link" %></li>
-    </ul>
-  </div>
-  <%= link_to "Delete account", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
